@@ -1,27 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { CheckBox } from 'react-native-elements'
+import PropTypes from 'prop-types';
 
-class ToDoItemComponent extends React.Component{
-
-    state={
-        checked: false
-    }
+class ToDoItemComponent extends React.Component {
+    state = { isChecked: false }
 
     render() {
-        return(
+        return (
             <View style={styles.paper}>
-            
-                <Text style={styles.title}>HI</Text>
-                <CheckBox checked={this.state.checked} onPress={() => {this._pressCheckBox()}}></CheckBox>
-                <Text style={styles.subText}>This is maybe a test but that is maybe for you decide if it is maybe a test.</Text>
+                <Text style={styles.title}>{this.props.title}</Text>
+                <CheckBox checked={this.state.isChecked} onPress={() => { this._pressCheckBox() }}></CheckBox>
+                <Text style={styles.subText}>{this.props.subText}</Text>
             </View>
         )
     }
-    _pressCheckBox(){
-        console.log("I've been called")
-        this.setState({checked: !this.state.checked})
+    _pressCheckBox() {
+        
+        this.setState({ isChecked: !this.state.isChecked })
     }
+}
+
+ToDoItemComponent.propTypes = {
+    title: PropTypes.string.isRequired,
+    subText: PropTypes.string.isRequired,
+    // isChecked: PropTypes.bool.isRequired
 }
 
 
@@ -32,15 +35,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         margin: 10
     },
-
     title: {
         fontSize: 40
     },
-
     subText: {
-        fontSize: 20
+        fontSize: 16
     }
-
 })
 
 export default ToDoItemComponent

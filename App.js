@@ -6,7 +6,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ToDoItemComponent/>
+        <ToDoItemComponent title="TODO TITLE" subText="WOW THIS IS THE SUBTEXT OF OUR TODO. IT CONTAINS MORE INFORMATION ABOU THINGS"/>
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
