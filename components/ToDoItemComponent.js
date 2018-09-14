@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         elevation: 4,
         alignSelf: 'stretch',
         backgroundColor: 'white',
-        margin: 10
+        margin: 10,
+        flex: 1
     },
     title: {
         fontSize: 40

@@ -1,25 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Platform } from 'react-native';
 import ToDoItemComponent from './components/ToDoItemComponent'
+import ToDoList from './containers/ToDoListContainer'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import myStore from './data'
+
+const store = createStore(myStore)
+
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <ToDoItemComponent title="TODO TITLE" subText="WOW THIS IS THE SUBTEXT OF OUR TODO. IT CONTAINS MORE INFORMATION ABOU THINGS"/>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <ToDoList />
+        </View>
+      </Provider>
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'whitesmoke',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
   },
+  stretch: {
+    flex: 1
+  }
 });
