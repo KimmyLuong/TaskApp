@@ -1,10 +1,11 @@
 import TodoActionTypes from './TodoActionTypes'
 import Counter from '../util/Counter'
 
-export const addTodo = (text) => ({
+export const addTodo = (text, subText) => ({
     type: TodoActionTypes.ADD_TODO,
     id: Counter.increment(),
-    text
+    text, 
+    subText
 })
 
 export const toggleTodo = (id) => ({

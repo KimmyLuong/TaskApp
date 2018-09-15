@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { CheckBox } from 'react-native-elements'
+import { CheckBox, Button } from 'react-native-elements'
 import PropTypes from 'prop-types';
 
 class ToDoItemComponent extends React.Component {
@@ -9,15 +9,16 @@ class ToDoItemComponent extends React.Component {
     render() {
         return (
             <View style={styles.paper}>
+                <Button
+                    title="Delete"
+                    onPress={() => this.props.onDeleteTodo(this.props.id)} />
                 <Text style={styles.title}>{this.props.title}</Text>
-                <CheckBox checked={this.state.isChecked} onPress={() => { this._pressCheckBox() }}></CheckBox>
+                <CheckBox
+                    checked={this.props.complete}
+                    onPress={() => this.props.onToggleTodo(this.props.id)} />
                 <Text style={styles.subText}>{this.props.subText}</Text>
             </View>
         )
-    }
-    _pressCheckBox() {
-        
-        this.setState({ isChecked: !this.state.isChecked })
     }
 }
 
